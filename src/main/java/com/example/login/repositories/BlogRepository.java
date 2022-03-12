@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.example.login.models.Blog;
 
 @Repository
-public interface BlogRepository extends JpaRepository<Blog, Long>{
+public interface BlogRepository extends JpaRepository<Blog, Long> {
 
-    List<Blog> findByUserId(Long userId);
+	List<Blog> findByUserId(Long userId);
 }

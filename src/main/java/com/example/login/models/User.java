@@ -1,8 +1,11 @@
 package com.example.login.models;
 
-import java.util.Set;
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 @Entity // 注释以下类会被用来创建实例
@@ -11,7 +14,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO) // 自动增加生成
 	private Long id;
-	
+
 	@Size(min = 3, max = 100)
 	@Column(name = "username")
 	private String username;
@@ -19,20 +22,19 @@ public class User {
 	@Size(min = 3, max = 100)
 	@Column(name = "password")
 	private String password;
-	
-	
+
 	public User() {
 	}
-	
+
 	public User(String username, String password) {
 		this.username = username;
 		this.password = password;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
-	
+
 	public String getUsername() {
 		return username;
 	}
@@ -48,7 +50,6 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
 
 	@Override
 	public String toString() {
