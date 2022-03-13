@@ -28,6 +28,10 @@ public class BlogController {
 		map.put("username", userService.findById(userId).get().getUsername()); // 将前端需要的参数放进去
 		List<Blog> blogs = blogService.findBlogsByUserId(userId);
 		map.put("blogs", blogs);
+		blogs.stream().forEach(c -> {
+			System.out.println(c.getImage());
+		});
+
 		return "blog";
 	}
 
@@ -39,9 +43,9 @@ public class BlogController {
 
 	@PostMapping("/editor")
 	public ModelAndView addBlog(@RequestParam("title") String title, @RequestParam("content") String content,
-			@RequestParam("username") String username) {
+			@RequestParam("username") String username, @RequestParam("image") String image) {
 		User user = userService.findByUsername(username);
-		blogService.addBlog(title, content, user);
+		blogService.addBlog(title, content, user, image);
 		ModelAndView mv = new ModelAndView("redirect:/blog");
 		mv.addObject("user_id", user.getId());
 		return mv;

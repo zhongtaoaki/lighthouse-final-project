@@ -18,8 +18,8 @@ public class BlogService {
 		return blogRepository.findByUserId(userId);
 	}
 
-	public Blog addBlog(String title, String content, User user) {
-		return blogRepository.save(new Blog(title, content, user));
+	public Blog addBlog(String title, String content, User user, String image) {
+		return blogRepository.save(new Blog(title, content, image, user));
 	}
 
 }
