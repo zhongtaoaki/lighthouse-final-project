@@ -12,7 +12,13 @@
 			<h2 style="text-align:left; padding:20px;" th:text="${blog.title}"></h2>
 			<p style="text-align:left; padding:20px;" th:text="${blog.content}"></p>
 			<img th:src="${blog.image}">
-			<div style="margin-right:100px; text-align:right; " ><a  th:href="@{/deleteBlog(username=${username},id = ${blog.id})}"><button style="padding:5px">Delete</button></a></div>
+			
+			<div style="margin-right:100px; text-align:right; " ><a  th:href="@{/deleteBlog(username=${username},id = ${blog.id})}">
+			<button style="padding:5px">Delete</button></a></div>
+			
+			
+			<div style="margin-right:100px; text-align:right; " ><a  th:href="@{/showUpdate(username=${username},id = ${blog.id})}">
+			<button style="padding:5px">Update</button></a></div>
 			<br>
 		</div>
 		
@@ -21,3 +27,4 @@
 		
 	</body>
 </html>
+ 

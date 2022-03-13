@@ -39,16 +39,17 @@ public class BlogController {
 
 	@PostMapping("/editor")
 	public ModelAndView addBlog(@RequestParam("title") String title, @RequestParam("content") String content,
-			@RequestParam("username") String username,@RequestParam("image") String image) {
+			@RequestParam("username") String username, @RequestParam("image") String image) {
 		User user = userService.findByUsername(username);
-		blogService.addBlog(title, content, user,image);
+		blogService.addBlog(title, content, user, image);
 		ModelAndView mv = new ModelAndView("redirect:/blog");
 		mv.addObject("user_id", user.getId());
 		return mv;
 
 	}
+
 	@GetMapping("/deleteBlog")
-	public ModelAndView deleteBlog (@RequestParam("username")String username,@RequestParam("id") Long id ) {
+	public ModelAndView deleteBlog(@RequestParam("username") String username, @RequestParam("id") Long id) {
 		User user = userService.findByUsername(username);
 		blogService.deleteBlog(id);
 		ModelAndView mv = new ModelAndView("redirect:/blog");
@@ -56,4 +57,30 @@ public class BlogController {
 		return mv;
 	}
 
+	@GetMapping("/showUpdate")
+	public ModelAndView showUpdate(@RequestParam("username") String username, @RequestParam("id") Long id) {
+		User user = userService.findByUsername(username);
+		Blog blog = blogService.findBlogById(id);
+		ModelAndView mv = new ModelAndView("update");
+		mv.addObject("user_id", user.getId());
+		mv.addObject("username", username);
+		mv.addObject("blog", blog);
+		return mv;
+	}
+
+	@PostMapping("/update")
+	public String update(@RequestParam("title") String title, @RequestParam("content") String content,
+			@RequestParam("username") String username,@RequestParam("image") String image,@RequestParam("blog_id") Long id, Map<String, Object> map) {  
+		
+		Blog blog = blogService .findBlogById(id);
+			blog.setContent(content);
+			blog.setImage(image);
+			blog.setTitle(title);
+			blogService.updateBlog(blog);		
+		User user = userService.findByUsername(username);
+		map.put("username",username); // 
+		List<Blog> blogs = blogService.findBlogsByUserId(user.getId());
+		map.put("blogs", blogs);
+		return "blog";
+	}
 }
