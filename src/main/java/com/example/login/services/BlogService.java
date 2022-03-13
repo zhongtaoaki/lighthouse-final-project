@@ -21,5 +21,8 @@ public class BlogService {
 	public Blog addBlog(String title, String content, User user,String image) {
 		return blogRepository.save(new Blog(title, content, user, image));
 	}
+	public void deleteBlog(Long id) {		
+		blogRepository.deleteById(id);
+	}
 
 }
