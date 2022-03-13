@@ -47,5 +47,13 @@ public class BlogController {
 		return mv;
 
 	}
+	@GetMapping("/deleteBlog")
+	public ModelAndView deleteBlog (@RequestParam("username")String username,@RequestParam("id") Long id ) {
+		User user = userService.findByUsername(username);
+		blogService.deleteBlog(id);
+		ModelAndView mv = new ModelAndView("redirect:/blog");
+		mv.addObject("user_id", user.getId());
+		return mv;
+	}
 
 }
