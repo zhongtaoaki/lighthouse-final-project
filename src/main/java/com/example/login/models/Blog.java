@@ -17,7 +17,7 @@ import javax.validation.constraints.Size;
 
 public class Blog {
 
-	public Blog(@Size(min = 1, max = 255) String title, String content, String image, User user) {
+	public Blog(@Size(min = 1, max = 255) String title, String content, User user,String image) {
 		super();
 		this.title = title;
 		this.content = content;
@@ -66,7 +66,7 @@ public class Blog {
 	}
 
 	public Blog(@Size(min = 1, max = 255) String title, String content, User user) {
-		this(title, content, null, user);
+		this(title, content, user,null);
 	}
 
 	public Blog() {

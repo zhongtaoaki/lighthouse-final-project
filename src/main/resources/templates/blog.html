@@ -11,6 +11,7 @@
 		<div style="background-color:#BCA;  text-align:center; margin:50px;" th:each="blog : ${blogs}">
 			<h2 style="text-align:left; padding:20px;" th:text="${blog.title}"></h2>
 			<p style="text-align:left; padding:20px;" th:text="${blog.content}"></p>
+			<img th:src="${blog.image}">
 			<br>
 		</div>
 		

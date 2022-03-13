@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://thymeleaf.org">
 <head>
-<title>Blog editor</title>
+<title>Blog Title</title>
+
 
 <style type="text/css">
 </style>
@@ -16,14 +17,22 @@
 		<form action="/editor" method="post">
 		<input type="hidden" name="username" th:value="${username}">
 			<table>
+				
 				<tr>
 					<td><label style="padding-right: 100px; color: #666" for="title">Blog title</label></td>
 					<td><input style="width: 500px; height: 30px;" type="text" id='title' name="title" placeholder='add a title'></td>
 				</tr>
+				
 				<tr>
 					<td><label style="padding-right: 100px; color: #666" for="content">Blog content</label></td>
 					<td><textarea style="width: 500px; height: 300px;" id='content' name="content" placeholder='add contents'></textarea></td>
+			   </tr>
+				
+				<tr>
+				<td><label style="padding-right: 100px; color: #666" for="image">Image Reference</label></td>
+					<td><input style="width: 500px; height: 30px;" type="text" id='image' name="image" placeholder='add a link'></td>
 				</tr>
+				
 				<tr>
 					<td><input style="width: 100px; height: 70px;" type="submit" value="Go"></td>
 				</tr>
@@ -32,3 +41,4 @@
 	</div>
 </body>
 </html>
+
